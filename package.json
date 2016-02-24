@@ -1,13 +1,9 @@
 {
   "name": "xsolla",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
   "scripts": {
     "test": "mocha"
   },
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "chakram": "^1.2.2",
     "data-driven": "^1.2.1"
