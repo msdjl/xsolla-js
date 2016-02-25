@@ -42,10 +42,10 @@ Don't make testers cry, please :) Define various restrictions/requirements to da
 1. Send post request to /promotions with required params  
 2. Send get request to /promotions/{id}  
 *AR:* Value of 'description' field is []  
-*ER:* Value of 'description' field is {}  
+*ER:* Value of 'description' field is {}
 
 ##### Incorrect status codes for requests without required params
 *Steps*  
-1. Send post request to /promotions with empty body
+1. Send post request to /promotions with empty body  
 *AR:* Status code of the response is 422  
 *ER:* Status code of the response is 400, in accordance to the docs  
