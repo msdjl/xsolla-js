@@ -96,6 +96,7 @@ module.exports = {
                 minimum: 1
             }
         },
-        required: ["id"]
+        required: ["id"],
+        additionalProperties: false
     }
 };
