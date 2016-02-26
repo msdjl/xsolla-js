@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "chakram": "^1.2.2",
-    "data-driven": "^1.2.1"
+    "data-driven": "^1.2.1",
+    "q": "^1.4.1"
   }
 }
