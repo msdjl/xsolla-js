@@ -98,5 +98,22 @@ module.exports = {
         },
         required: ["id"],
         additionalProperties: false
+    },
+    error: {
+        properties: {
+            http_status_code: {
+                type: "integer",
+                minimum: 400
+            },
+            message: {
+                type: "string",
+                minLength: 5
+            },
+            request_id: {
+                type: "string",
+                minLength: 5
+            }
+        },
+        required: ["http_status_code", "message", "request_id"]
     }
 };
