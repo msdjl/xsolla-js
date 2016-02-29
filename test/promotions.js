@@ -13,7 +13,7 @@ describe('Xsolla API', function () {
     describe('Promotions', function () {
         describe('Create/Get', function () {
             dd(testData.correctPromotionsOpts, function () {
-                it('should create/get promotion when {description}', function (promotion) { return co(function* (){
+                it('should create/get promotion when {description}', co.wrap(function* (promotion){
                     let postResponse = yield promotions.post(promotion.options);
                     expect(postResponse)
                         .to.have.status(201)
@@ -26,7 +26,7 @@ describe('Xsolla API', function () {
                         .to.have.status(200)
                         .to.comprise.of.json(expectedJson)
                         .to.have.schema(schemas.getPromotionResponse);
-                })});
+                }));
             });
             dd(testData.incorrectPromotionsOpts, function () {
                 it('should not create promotion when {description}', function (promotion) {
@@ -38,21 +38,21 @@ describe('Xsolla API', function () {
             });
         });
         describe('Delete', function () {
-            it('should delete a promotion', function () { return co(function* () {
+            it('should delete a promotion', co.wrap(function* () {
                 let postResponse = yield promotions.post(testData.correctPromotionsOpts[0]['options']);
                 let promotionId = postResponse.body.id;
                 let deleteResponse = yield promotions.delete(promotionId);
                 expect(deleteResponse).to.have.status(204);
                 let getResponse = yield promotions.get(promotionId);
                 expect(getResponse).to.have.status(404);
-            })});
+            }));
         });
         describe('Get list', function () {
             beforeEach('delete all promotions', function () {
                 return promotions.deleteAll();
             });
             dd([ {val:0},{val:1},{val:2} ], function () {
-                it('should return list with {val} item(s)', function (count) { return co(function* () {
+                it('should return list with {val} item(s)', co.wrap(function* (count) {
                     let arrayOfOptions = testData.correctPromotionsOpts.slice(0, count.val).map( obj => obj.options );
                     let expectedIds = yield promotions.postAll(arrayOfOptions);
                     let getAllResponse = yield promotions.getAll();
@@ -62,7 +62,7 @@ describe('Xsolla API', function () {
                     expect(getAllResponse.body).to.have.length(count.val);
                     let actualIds = getAllResponse.body.map( obj => obj.id );
                     expect(actualIds.sort()).to.deep.equal(expectedIds.sort());
-                })});
+                }));
             });
         });
     });
