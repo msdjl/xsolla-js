@@ -6,7 +6,7 @@ Don't make testers cry, please :) Define various restrictions/requirements to da
 
 ##### It's possible to post promotion with params like read_only or enabled 
 *Steps*  
-1. Send post request to /promotions with required params and 'enabled: true'
+1. Send post request to /promotions with required params and 'enabled: true'  
 2. Send get request to /promotions/{id}  
 *AR:* No errors in the post response, but get response contains 'enabled: false'  
 *ER:* To be clarified. If it's fine to set such params during creation, then params should be applied. If params can be changed by separated methods only, then post should return an error.
